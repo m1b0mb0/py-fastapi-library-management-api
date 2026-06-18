@@ -2,8 +2,11 @@ from fastapi import Depends, FastAPI, HTTPException, Query
 from sqlalchemy.orm import Session
 
 import crud
-from database import SessionLocal
+import models
 import schemas
+from database import Base, SessionLocal, engine
+
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
